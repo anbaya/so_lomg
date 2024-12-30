@@ -1,5 +1,3 @@
-#include "mlx.h"
-#include <fcntl.h>
 #include "so_long.h"
 
 int count_lines(char *map)
