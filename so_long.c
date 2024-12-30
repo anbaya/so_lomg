@@ -25,9 +25,7 @@ int count_lines(char *map)
 int **map_reader(char *map, t_data data)
 {
     char **str_map;
-    int lines;
-    int i;
-    int fd;
+    int (lines), (i), (fd);
 
     lines = count_lines (map);
     if (!lines)
@@ -84,7 +82,7 @@ int game_controlls(t_data data)
         (data->map[x - 1][y] = 'P'), (data->map[x][y] == '0'), (data->player_x -= 20);
     if (data->key == 97 && data->map[data->player_x + 1][data->playar_y] == '0') // 'D' key
         (data->map[x + 1][y] = 'P'), (data->map[x][y] == '0'), (data->player_x += 20);
-
+    return (0);
 }
 
 int main (int ac, char **av)
