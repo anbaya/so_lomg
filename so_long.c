@@ -73,13 +73,16 @@ int game_resolution (t_data *data)
 int game_controlls(t_data *data)
 {
     if (data->key == 119 && data->map[data->player_x][data->player_y - 1] == '0') // 'W' key
-        (data->map[x][y - 1] = 'P'), (data->map[x][y] == '0'), (data->player_y -= 20);
+        (data->map[data->player_x][data->player_y - 1] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_y -= 20);
+
     if (data->key == 119 && data->map[data->player_x][data->player_y + 1] == '0') // 'S' key
-        (data->map[x][y + 1] = 'P'), (data->map[x][y] == '0'), (data->player_y += 20);
+        (data->map[data->player_x][data->player_y + 1] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_y += 20);
+
     if (data->key == 97 && data->map[data->player_x - 1][data->player_y] == '0') // 'A' key
-        (data->map[x - 1][y] = 'P'), (data->map[x][y] == '0'), (data->player_x -= 20);
+        (data->map[data->player_x - 1][data->player_y] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_x -= 20);
+
     if (data->key == 97 && data->map[data->player_x + 1][data->player_y] == '0') // 'D' key
-        (data->map[x + 1][y] = 'P'), (data->map[x][y] == '0'), (data->player_x += 20);
+        (data->map[data->player_x + 1][data->player_y] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_x += 20);
     return (0);
 }
 
@@ -96,7 +99,7 @@ int main (int ac, char **av)
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, win_len, win_len, "so_long");
     data->map = map_reader(av[1], data);
-    game_resolution (av[1], data, win_len);
+    game_resolution (data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);
     mlx_hook(data->win, 3, (1L<<1), key_release, data);
     mlx_loop_hook(data->mlx, game_controlls, data);
