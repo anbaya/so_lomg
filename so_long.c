@@ -72,18 +72,22 @@ int game_resolution (t_data *data)
 
 int game_controlls(t_data *data)
 {
-    if (data->key == 119 && data->map[data->player_x][data->player_y - 1] == '0') // 'W' key
+    if (data->key == 119 && (data->map[data->player_x][data->player_y - 1] == '0') || (data->map[data->player_x][data->player_y - 1] == 'C') 
+    || (data->map[data->player_x][data->player_y - 1] == 'E')) // 'W' key
         (data->map[data->player_x][data->player_y - 1] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_y -= 20);
 
-    if (data->key == 119 && data->map[data->player_x][data->player_y + 1] == '0') // 'S' key
+    if (data->key == 119 && (data->map[data->player_x][data->player_y + 1] == '0') || (data->map[data->player_x][data->player_y + 1] == 'C') 
+    || (data->map[data->player_x][data->player_y + 1] == 'E')) // 'S' key
         (data->map[data->player_x][data->player_y + 1] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_y += 20);
 
-    if (data->key == 97 && data->map[data->player_x - 1][data->player_y] == '0') // 'A' key
+    if (data->key == 97 && (data->map[data->player_x - 1][data->player_y] == '0') || (data->map[data->player_x - 1][data->player_y] == 'C') 
+    || (data->map[data->player_x - 1][data->player_y] == 'E')) // 'A' key
         (data->map[data->player_x - 1][data->player_y] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_x -= 20);
 
-    if (data->key == 97 && data->map[data->player_x + 1][data->player_y] == '0') // 'D' key
+    if (data->key == 97 && (data->map[data->player_x + 1][data->player_y] == '0') || (data->map[data->player_x + 1][data->player_y] == 'C') 
+    || (data->map[data->player_x + 1][data->player_y] == 'E')) // 'D' key
         (data->map[data->player_x + 1][data->player_y] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_x += 20);
-    return (0);
+    return (game_resolution(data), 0);
 }
 
 int main (int ac, char **av)
