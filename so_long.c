@@ -45,7 +45,7 @@ int **map_reader(char *map, t_data data)
     close (fd);
     return (str_map);
 }
-int game_resolution (char *map_path, t_data data, int win_len)
+int game_resolution (t_data data)
 {
     int (i), (j), (x), (y);
 
@@ -56,17 +56,22 @@ int game_resolution (char *map_path, t_data data, int win_len)
         while (data->map[i][j])
         {
             if (data->map[i][j] == '0')
-                mlx_put_image_to_window();
+                mlx_put_image_to_window(data->mlx, data->win, "floor.xpm", x, y);
             if (data->map[i][j] == '1')
-                mlx_put_image_to_window();
+                mlx_put_image_to_window(data->mlx, data->win, "wall.xpm", x, y);
             if (data->map[i][j] == 'P')
-                mlx_put_image_to_window();
+                mlx_put_image_to_window(data->mlx, data->win, "player.xpm", x, y);
             if (data->map[i][j] == 'E')
-                mlx_put_image_to_window();
-            j++;
+                mlx_put_image_to_window(data->mlx, data->win, "enemy.xpm", x, y);
+            if (data->map[i][j] == 'C')
+                mlx_put_image_to_window(data->mlx, data->win, "coin.xpm", x, y);
+            if (data->map[i][j] == 'E')
+                mlx_put_image_to_window(data->mlx, data->win, "exit.xpm", x, y);
+            (j++), (x += 20);
         }
-        i++;
+        (i++), (y += 20);
     }
+    return (0);
 }
 
 int main (int ac, char **av)
