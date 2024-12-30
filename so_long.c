@@ -60,7 +60,7 @@ int game_resolution (t_data data)
             if (data->map[i][j] == '1')
                 mlx_put_image_to_window(data->mlx, data->win, "wall.xpm", x, y);
             if (data->map[i][j] == 'P')
-                mlx_put_image_to_window(data->mlx, data->win, "player.xpm", x, y);
+                (mlx_put_image_to_window(data->mlx, data->win, "player.xpm", x, y)), (data->player_x = x), (data->player_y = y);
             if (data->map[i][j] == 'E')
                 mlx_put_image_to_window(data->mlx, data->win, "enemy.xpm", x, y);
             if (data->map[i][j] == 'C')
@@ -69,9 +69,22 @@ int game_resolution (t_data data)
                 mlx_put_image_to_window(data->mlx, data->win, "exit.xpm", x, y);
             (j++), (x += 20);
         }
-        (i++), (y += 20);
+        (i++), (y += 20), (j = 0);
     }
     return (0);
+}
+
+int game_controlls(t_data data)
+{
+    if (data->key == 119 && data->map[data->player_x][data->playar_y - 1] == '0') // 'W' key
+        (data->map[x][y - 1] = 'P'), (data->map[x][y] == '0'), (data->player_y -= 20);
+    if (data->key == 119 && data->map[data->player_x][data->playar_y + 1] == '0') // 'S' key
+        (data->map[x][y + 1] = 'P'), (data->map[x][y] == '0'), (data->player_y += 20);
+    if (data->key == 97 && data->map[data->player_x - 1][data->playar_y] == '0') // 'A' key
+        (data->map[x - 1][y] = 'P'), (data->map[x][y] == '0'), (data->player_x -= 20);
+    if (data->key == 97 && data->map[data->player_x + 1][data->playar_y] == '0') // 'D' key
+        (data->map[x + 1][y] = 'P'), (data->map[x][y] == '0'), (data->player_x += 20);
+
 }
 
 int main (int ac, char **av)
