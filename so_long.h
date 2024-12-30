@@ -24,5 +24,7 @@ typedef struct s_data
     int key;
 }t_data;
 
+int key_press(int key_code, t_data *data);
+int key_release(int key_code, t_data *data);
 
 #endif
