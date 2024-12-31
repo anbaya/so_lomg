@@ -33,5 +33,10 @@ char	*ft_substr(char const *s, size_t start, size_t len);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 char	*get_next_line(int fd);
+int count_lines(char *map, t_data *data);
+int **map_reader(char *map, t_data *data);
+int game_resolution (t_data *data);
+int game_controlls(t_data *data);
+
 
 #endif

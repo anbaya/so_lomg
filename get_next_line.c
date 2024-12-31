@@ -6,11 +6,11 @@
 /*   By: anbaya <anbaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:55:01 by anbaya            #+#    #+#             */
-/*   Updated: 2024/12/11 16:14:24 by anbaya           ###   ########.fr       */
+/*   Updated: 2024/12/31 14:01:33 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 void	freedom(char **new_sv, char **tmp)
 {

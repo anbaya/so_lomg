@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-int Key_press(int key_code, t_data *data)
+int key_press(int key_code, t_data *data)
 {
     if (key_code == 65307)
     {

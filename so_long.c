@@ -97,12 +97,12 @@ int main (int ac, char **av)
     t_data *data;
 
     data = malloc(sizeof(t_data));
-    fd_map = open(av[1], O_RDWR, 0777);
+    fd_map = open("map.ber", O_RDWR, 0777);
     win_len = ft_strlen(get_next_line (fd_map)) * 20;
     close (fd_map);
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, win_len, win_len, "so_long");
-    data->map = map_reader(av[1], data);
+    data->map = map_reader("map.ber", data);
     game_resolution (data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);
     mlx_hook(data->win, 3, (1L<<1), key_release, data);
