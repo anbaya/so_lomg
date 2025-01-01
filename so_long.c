@@ -59,17 +59,17 @@ int game_resolution (t_data *data)
         while (data->map[i][j])
         {
             if (data->map[i][j] == '0')
-                mlx_put_image_to_window(data->mlx, data->win, "floor.xpm", x, y);
+                mlx_put_image_to_window(data->mlx, data->win, FLOOR, x, y);
             if (data->map[i][j] == '1')
-                mlx_put_image_to_window(data->mlx, data->win, "wall.xpm", x, y);
+                mlx_put_image_to_window(data->mlx, data->win, WALL, x, y);
             if (data->map[i][j] == 'P')
-                (mlx_put_image_to_window(data->mlx, data->win, "player.xpm", x, y)), (data->player_x = x), (data->player_y = y);
+                (mlx_put_image_to_window(data->mlx, data->win, PLAYER, x, y)), (data->player_x = x), (data->player_y = y);
             if (data->map[i][j] == 'E')
-                mlx_put_image_to_window(data->mlx, data->win, "enemy.xpm", x, y);
+                mlx_put_image_to_window(data->mlx, data->win, ENEMY, x, y);
             if (data->map[i][j] == 'C')
-                mlx_put_image_to_window(data->mlx, data->win, "coin.xpm", x, y);
+                mlx_put_image_to_window(data->mlx, data->win, COIN, x, y);
             if (data->map[i][j] == 'E')
-                mlx_put_image_to_window(data->mlx, data->win, "exit.xpm", x, y);
+                mlx_put_image_to_window(data->mlx, data->win, EXIT, x, y);
             (j++), (x += SIZE);
         }
         (i++), (y += SIZE), (j = 0);
@@ -99,10 +99,8 @@ int main (int ac, char **av)
     data = malloc(sizeof(t_data));
     if (!data)
         return (0);
-    data->map = map_reader("map.ber" , data);
-    //fd_map = open("map.ber" , O_RDONLY, 0777);
+    data->map = map_reader(av[1] , data);
     win_len = ft_strlen(data->map[0]) * SIZE;
-    //close (fd_map);
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, win_len, win_len, "so_long");
     game_resolution (data);
