@@ -20,7 +20,7 @@ int count_lines(char *map, t_data *data)
     return (i);
 }
  
-int **map_reader(char *map, t_data *data)
+char **map_reader(char *map, t_data *data)
 {
     char **str_map;
     int (lines), (i), (fd);
@@ -73,13 +73,13 @@ int game_resolution (t_data *data)
 int game_controlls(t_data *data)
 {
     if (data->key == 119 && (data->map[data->player_x][data->player_y - 1] != '1')) // 'W' key and its not wall
-        w(data);
+        key_w(data);
     if (data->key == 119 && (data->map[data->player_x][data->player_y + 1] != '1')) // 'S' key and its not wall
-        s(data);
+        key_s(data);
     if (data->key == 97 && (data->map[data->player_x - 1][data->player_y] != '1')) // 'A' key and its not wall
-        a(data);
+        key_a(data);
     if (data->key == 97 && (data->map[data->player_x + 1][data->player_y] != '1')) // 'D' key and its not wall
-        d(data);
+        key_d(data);
     return (game_resolution(data), 0);
 }
 
@@ -90,12 +90,12 @@ int main (int ac, char **av)
     t_data *data;
 
     data = malloc(sizeof(t_data));
-    fd_map = open("map.ber", O_RDWR, 0777);
+    fd_map = open(av[1] , O_RDWR, 0777);
     win_len = ft_strlen(get_next_line (fd_map)) * 20;
     close (fd_map);
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, win_len, win_len, "so_long");
-    data->map = map_reader("map.ber", data);
+    data->map = map_reader(av[1] , data);
     game_resolution (data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);
     mlx_hook(data->win, 3, (1L<<1), key_release, data);
