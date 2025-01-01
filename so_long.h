@@ -25,6 +25,14 @@ typedef struct s_data
     int key;
 }t_data;
 
+# define SIZE 40
+# define WALL "textures/wall.xpm"
+# define FLOOR "textures/floor.xpm"
+# define PLAYER "textures/player.xpm"
+# define EXIT "textures/exit.xpm"
+# define ENEMY "textures/enemy.xpm"
+# define COIN "textures/coin.xpm"
+
 int key_press(int key_code, t_data *data);
 int key_release(int key_code, t_data *data);
 size_t	ft_strlen(const char *s);

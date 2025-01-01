@@ -16,7 +16,8 @@ int count_lines(char *map, t_data *data)
         // if (ft_strlen(len_to_cmp) != ft_strlen(data->map_line_to_cmp));
         //     return 0;
         len_to_cmp = get_next_line(fd);
-        //free (len_to_cmp);
+        if (len_to_cmp)
+            free (len_to_cmp);
         i++;
     }
     close (fd);
@@ -69,9 +70,9 @@ int game_resolution (t_data *data)
                 mlx_put_image_to_window(data->mlx, data->win, "coin.xpm", x, y);
             if (data->map[i][j] == 'E')
                 mlx_put_image_to_window(data->mlx, data->win, "exit.xpm", x, y);
-            (j++), (x += 20);
+            (j++), (x += SIZE);
         }
-        (i++), (y += 20), (j = 0);
+        (i++), (y += SIZE), (j = 0);
     }
     return (0);
 }
@@ -100,7 +101,7 @@ int main (int ac, char **av)
         return (0);
     data->map = map_reader("map.ber" , data);
     //fd_map = open("map.ber" , O_RDONLY, 0777);
-    win_len = ft_strlen(data->map[0]) * 20;
+    win_len = ft_strlen(data->map[0]) * SIZE;
     //close (fd_map);
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, win_len, win_len, "so_long");
