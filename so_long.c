@@ -72,21 +72,14 @@ int game_resolution (t_data *data)
 
 int game_controlls(t_data *data)
 {
-    if (data->key == 119 && (data->map[data->player_x][data->player_y - 1] == '0') || (data->map[data->player_x][data->player_y - 1] == 'C') 
-    || (data->map[data->player_x][data->player_y - 1] == 'E')) // 'W' key
-        (data->map[data->player_x][data->player_y - 1] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_y -= 20);
-
-    if (data->key == 119 && (data->map[data->player_x][data->player_y + 1] == '0') || (data->map[data->player_x][data->player_y + 1] == 'C') 
-    || (data->map[data->player_x][data->player_y + 1] == 'E')) // 'S' key
-        (data->map[data->player_x][data->player_y + 1] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_y += 20);
-
-    if (data->key == 97 && (data->map[data->player_x - 1][data->player_y] == '0') || (data->map[data->player_x - 1][data->player_y] == 'C') 
-    || (data->map[data->player_x - 1][data->player_y] == 'E')) // 'A' key
-        (data->map[data->player_x - 1][data->player_y] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_x -= 20);
-
-    if (data->key == 97 && (data->map[data->player_x + 1][data->player_y] == '0') || (data->map[data->player_x + 1][data->player_y] == 'C') 
-    || (data->map[data->player_x + 1][data->player_y] == 'E')) // 'D' key
-        (data->map[data->player_x + 1][data->player_y] = 'P'), (data->map[data->player_x][data->player_y] == '0'), (data->player_x += 20);
+    if (data->key == 119 && (data->map[data->player_x][data->player_y - 1] != '1')) // 'W' key and its not wall
+        w(data);
+    if (data->key == 119 && (data->map[data->player_x][data->player_y + 1] != '1')) // 'S' key and its not wall
+        s(data);
+    if (data->key == 97 && (data->map[data->player_x - 1][data->player_y] != '1')) // 'A' key and its not wall
+        a(data);
+    if (data->key == 97 && (data->map[data->player_x + 1][data->player_y] != '1')) // 'D' key and its not wall
+        d(data);
     return (game_resolution(data), 0);
 }
 
