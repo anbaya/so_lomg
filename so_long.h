@@ -45,6 +45,7 @@ int count_lines(char *map, t_data *data);
 char **map_reader(char *map, t_data *data);
 int game_resolution (t_data *data);
 int game_controlls(t_data *data);
+void imges(t_data *data);
 int key_w(t_data *data);
 int key_s(t_data *data);
 int key_a(t_data *data);

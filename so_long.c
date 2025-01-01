@@ -35,7 +35,7 @@ char **map_reader(char *map, t_data *data)
     lines = count_lines (map, data);
     if (!lines)
         return (0);
-    str_map = malloc(sizeof (char *) * lines + 1);
+    str_map = malloc(sizeof (char *) * lines);
     if (!str_map)
         return (0);
     i = 0;
@@ -103,6 +103,7 @@ int main (int ac, char **av)
     win_len = ft_strlen(data->map[0]) * SIZE;
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, win_len, win_len, "so_long");
+    imges (data);
     game_resolution (data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);
     mlx_hook(data->win, 3, (1L<<1), key_release, data);
