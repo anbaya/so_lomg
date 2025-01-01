@@ -7,33 +7,39 @@ int count_lines(char *map, t_data *data)
     char *len_to_cmp;
 
     i = 0;
-    fd = open (map, O_RDWR, 0777);
+    fd = open (map, O_RDONLY, 0777);
     if (data->map_line_to_cmp = get_next_line(fd))
         i++;
-    while (len_to_cmp = get_next_line(fd))
+    len_to_cmp = get_next_line(fd);
+    while (len_to_cmp)
     {
-        if (ft_strlen(len_to_cmp) != ft_strlen(data->map_line_to_cmp));
-            return 0;
+        // if (ft_strlen(len_to_cmp) != ft_strlen(data->map_line_to_cmp));
+        //     return 0;
+        len_to_cmp = get_next_line(fd);
+        //free (len_to_cmp);
         i++;
     }
     close (fd);
+    free (data->map_line_to_cmp);
     return (i);
 }
  
 char **map_reader(char *map, t_data *data)
 {
     char **str_map;
-    int (lines), (i), (fd);
+    int lines;
+    int i;
+    int fd;
 
     lines = count_lines (map, data);
     if (!lines)
         return (0);
-    str_map = malloc(sizeof (char *) * lines);
+    str_map = malloc(sizeof (char *) * lines + 1);
     if (!str_map)
         return (0);
     i = 0;
-    fd = open(map, O_RDWR, 0777);
-    while (i <= lines)
+    fd = open(map, O_RDONLY, 0777);
+    while (i < lines)
     {
         str_map[i] = get_next_line(fd);
         i++;
@@ -90,12 +96,14 @@ int main (int ac, char **av)
     t_data *data;
 
     data = malloc(sizeof(t_data));
-    fd_map = open(av[1] , O_RDWR, 0777);
-    win_len = ft_strlen(get_next_line (fd_map)) * 20;
-    close (fd_map);
+    if (!data)
+        return (0);
+    data->map = map_reader("map.ber" , data);
+    //fd_map = open("map.ber" , O_RDONLY, 0777);
+    win_len = ft_strlen(data->map[0]) * 20;
+    //close (fd_map);
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, win_len, win_len, "so_long");
-    data->map = map_reader(av[1] , data);
     game_resolution (data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);
     mlx_hook(data->win, 3, (1L<<1), key_release, data);
