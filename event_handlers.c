@@ -7,7 +7,6 @@ int key_press(int key_code, t_data *data)
         mlx_destroy_window(data->mlx, data->win);
         exit (0);
     }
-    mlx_clear_window(data->mlx, data->win);
     data->key = key_code;
     return (0);
 }

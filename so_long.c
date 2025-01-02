@@ -64,7 +64,7 @@ int game_resolution (t_data *data)
             if (data->map[i][j] == '1')
                 mlx_put_image_to_window(data->mlx, data->win, data->wall, x, y);
             if (data->map[i][j] == 'P')
-                (mlx_put_image_to_window(data->mlx, data->win, data->player, x, y)), (data->player_x = x), (data->player_y = y);
+                (mlx_put_image_to_window(data->mlx, data->win, data->player, x, y)), (data->player_x = i), (data->player_y = j);
             if (data->map[i][j] == 'M')
                 mlx_put_image_to_window(data->mlx, data->win, data->enemy, x, y);
             if (data->map[i][j] == 'C')
@@ -106,7 +106,6 @@ int main (int ac, char **av)
     data->win = mlx_new_window (data->mlx, win_len, win_len / 2, "so_long");
     imges (data);
     game_resolution (data);
-    find_player_position(data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);
     mlx_hook(data->win, 3, (1L<<1), key_release, data);
     mlx_loop_hook(data->mlx, game_controlls, data);
