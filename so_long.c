@@ -45,6 +45,7 @@ char **map_reader(char *map, t_data *data)
         str_map[i] = get_next_line(fd);
         i++;
     }
+    str_map[i] == NULL;
     close (fd);
     return (str_map);
 }
@@ -59,20 +60,20 @@ int game_resolution (t_data *data)
         while (data->map[i][j])
         {
             if (data->map[i][j] == '0')
-                mlx_put_image_to_window(data->mlx, data->win, FLOOR, x, y);
+                mlx_put_image_to_window(data->mlx, data->win, data->floor, x, y);
             if (data->map[i][j] == '1')
-                mlx_put_image_to_window(data->mlx, data->win, WALL, x, y);
+                mlx_put_image_to_window(data->mlx, data->win, data->wall, x, y);
             if (data->map[i][j] == 'P')
-                (mlx_put_image_to_window(data->mlx, data->win, PLAYER, x, y)), (data->player_x = x), (data->player_y = y);
-            if (data->map[i][j] == 'E')
-                mlx_put_image_to_window(data->mlx, data->win, ENEMY, x, y);
+                (mlx_put_image_to_window(data->mlx, data->win, data->player, x, y)), (data->player_x = x), (data->player_y = y);
+            if (data->map[i][j] == 'M')
+                mlx_put_image_to_window(data->mlx, data->win, data->enemy, x, y);
             if (data->map[i][j] == 'C')
-                mlx_put_image_to_window(data->mlx, data->win, COIN, x, y);
+                mlx_put_image_to_window(data->mlx, data->win, data->coin, x, y);
             if (data->map[i][j] == 'E')
-                mlx_put_image_to_window(data->mlx, data->win, EXIT, x, y);
+                mlx_put_image_to_window(data->mlx, data->win, data->exit, x, y);
             (j++), (x += SIZE);
         }
-        (i++), (y += SIZE), (j = 0);
+        (i++), (y += SIZE), (j = 0), (x = 0);
     }
     return (0);
 }
@@ -81,11 +82,11 @@ int game_controlls(t_data *data)
 {
     if (data->key == 119 && (data->map[data->player_x][data->player_y - 1] != '1')) // 'W' key and its not wall
         key_w(data);
-    if (data->key == 119 && (data->map[data->player_x][data->player_y + 1] != '1')) // 'S' key and its not wall
+    if (data->key == 115 && (data->map[data->player_x][data->player_y + 1] != '1')) // 'S' key and its not wall
         key_s(data);
     if (data->key == 97 && (data->map[data->player_x - 1][data->player_y] != '1')) // 'A' key and its not wall
         key_a(data);
-    if (data->key == 97 && (data->map[data->player_x + 1][data->player_y] != '1')) // 'D' key and its not wall
+    if (data->key == 100 && (data->map[data->player_x + 1][data->player_y] != '1')) // 'D' key and its not wall
         key_d(data);
     return (game_resolution(data), 0);
 }
