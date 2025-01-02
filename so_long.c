@@ -88,7 +88,12 @@ int game_controlls(t_data *data)
         key_w(data);
     if (data->key == 115 && (data->map[data->player_x + 1][data->player_y] != '1')) // 'S' key and its not wall
         key_s(data);
-    return (game_resolution(data));
+    if (data->key != 0)
+    {
+        game_resolution(data);
+        data->key = 0;
+    }
+    return (0);
 }
 
 int main (int ac, char **av)
