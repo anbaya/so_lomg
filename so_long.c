@@ -45,7 +45,7 @@ char **map_reader(char *map, t_data *data)
         str_map[i] = get_next_line(fd);
         i++;
     }
-    str_map[i] == NULL;
+    str_map[i] = NULL;
     close (fd);
     return (str_map);
 }
@@ -88,7 +88,7 @@ int game_controlls(t_data *data)
         key_a(data);
     if (data->key == 100 && (data->map[data->player_x + 1][data->player_y] != '1')) // 'D' key and its not wall
         key_d(data);
-    return (game_resolution(data), 0);
+    return (game_resolution(data));
 }
 
 int main (int ac, char **av)
@@ -100,12 +100,13 @@ int main (int ac, char **av)
     data = malloc(sizeof(t_data));
     if (!data)
         return (0);
-    data->map = map_reader(av[1] , data);
-    win_len = ft_strlen(data->map[0]) * SIZE;
+    data->map = map_reader("map.ber" , data);
+    win_len = (ft_strlen(data->map[0]) * SIZE) - SIZE;
     data->mlx = mlx_init ();
-    data->win = mlx_new_window (data->mlx, win_len, win_len, "so_long");
+    data->win = mlx_new_window (data->mlx, win_len, win_len / 2, "so_long");
     imges (data);
     game_resolution (data);
+    find_player_position(data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);
     mlx_hook(data->win, 3, (1L<<1), key_release, data);
     mlx_loop_hook(data->mlx, game_controlls, data);
