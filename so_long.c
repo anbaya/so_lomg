@@ -80,14 +80,14 @@ int game_resolution (t_data *data)
 
 int game_controlls(t_data *data)
 {
-    if (data->key == 119 && (data->map[data->player_x][data->player_y - 1] != '1')) // 'W' key and its not wall
-        key_w(data);
-    if (data->key == 115 && (data->map[data->player_x][data->player_y + 1] != '1')) // 'S' key and its not wall
-        key_s(data);
-    if (data->key == 97 && (data->map[data->player_x - 1][data->player_y] != '1')) // 'A' key and its not wall
+    if (data->key == 97 && (data->map[data->player_x][data->player_y - 1] != '1')) // 'A' key and its not wall
         key_a(data);
-    if (data->key == 100 && (data->map[data->player_x + 1][data->player_y] != '1')) // 'D' key and its not wall
+    if (data->key == 100 && (data->map[data->player_x][data->player_y + 1] != '1')) // 'D' key and its not wall
         key_d(data);
+    if (data->key == 119 && (data->map[data->player_x - 1][data->player_y] != '1')) // 'W' key and its not wall
+        key_w(data);
+    if (data->key == 115 && (data->map[data->player_x + 1][data->player_y] != '1')) // 'S' key and its not wall
+        key_s(data);
     return (game_resolution(data));
 }
 
