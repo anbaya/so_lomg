@@ -100,7 +100,7 @@ int main (int ac, char **av)
     data = malloc(sizeof(t_data));
     if (!data)
         return (0);
-    data->map = map_reader("map.ber" , data);
+    data->map = map_reader(av[1] , data);
     win_len = (ft_strlen(data->map[0]) * SIZE) - SIZE;
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, win_len, win_len / 2, "so_long");
