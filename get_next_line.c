@@ -6,7 +6,7 @@
 /*   By: anbaya <anbaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:55:01 by anbaya            #+#    #+#             */
-/*   Updated: 2024/12/31 14:01:33 by anbaya           ###   ########.fr       */
+/*   Updated: 2025/01/03 16:43:54 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*line_taker(char **sv)
 	i = 0;
 	while ((*sv)[i] != '\n' && (*sv)[i] != '\0')
 		i++;
-	tmp1 = ft_substr(*sv, 0, i + 1);
+	tmp1 = ft_substr(*sv, 0, i);
 	i++;
 	tmp2 = ft_substr(*sv, i, (ft_strlen(*sv) - i));
 	free(*sv);

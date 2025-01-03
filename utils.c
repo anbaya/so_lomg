@@ -41,8 +41,10 @@ char **map_dup(t_data *data)
 		return (0);
 	map = malloc(sizeof(char *) * data->map_lines);
     i = 0;
-    while (i++ <= data->map_lines)
+    while (i++ < data->map_lines)
+    {
         map[i] = ft_strdup(data->map[i]);
+    }
     return (map);
 }
 int find_player_position(t_data *data)

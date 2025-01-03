@@ -26,6 +26,7 @@ typedef struct s_data
     int key;
     int map_lines;
     int coins;
+    int len;
 }t_data;
 
 # define SIZE 40

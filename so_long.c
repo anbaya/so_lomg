@@ -106,8 +106,9 @@ int main (int ac, char **av)
         perror ("memory error!!");
         return (0);
     }
-    data->map = map_reader(av[1] , data);
-    win_len = (ft_strlen(data->map[0]) * SIZE) - SIZE;
+    data->map = map_reader("map.ber" , data);
+    data->len = ft_strlen(data->map[0]);
+    win_len = (data->len * SIZE) - SIZE;
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, win_len, win_len / 2, "so_long");
     if (!map_checker(data))
