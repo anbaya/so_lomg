@@ -53,14 +53,20 @@ int map_checker(t_data *data)
     int i;
     
     data->map2 = map_dup(data);
+    if (!data->map2)
+        return (0);
     i = 0;
-    find_player_position(data);
+    if (!find_player_position(data))
+    return (0);
     while (i < data->map_lines)
+    {
         if (ft_strlen(data->map2[i]) != ft_strlen(data->map2[i + 1]))
             return (0);
+    }
     data->coins = coin_counter(data, data->map2);
     if (data->coins == 0)
         return (0);
     if(!exit_finder(data, data->map2, data->player_x, data->player_y))
         return (0);
+    return (1);
 }

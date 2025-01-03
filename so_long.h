@@ -39,7 +39,7 @@ typedef struct s_data
 int key_press(int key_code, t_data *data);
 int key_release(int key_code, t_data *data);
 size_t	ft_strlen(const char *s);
-void find_player_position(t_data *data);
+int find_player_position(t_data *data);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, size_t start, size_t len);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);

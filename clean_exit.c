@@ -13,5 +13,6 @@ void clean_exit(t_data *data)
     mlx_destroy_display (data->mlx);
     free (data->map);
     free (data->map2);
+    free (data->map_len);
     free (data);
 }
