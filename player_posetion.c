@@ -12,8 +12,8 @@ void find_player_position(t_data *data)
         {
             if (data->map[i][j] == 'P')
             {
-                data->player_x = j; // Column index
-                data->player_y = i; // Row index
+                data->player_x = j;
+                data->player_y = i;
                 return;
             }
             j++;

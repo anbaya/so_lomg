@@ -8,20 +8,19 @@ int count_lines(char *map, t_data *data)
 
     i = 0;
     fd = open (map, O_RDONLY, 0777);
-    if (data->map_line_to_cmp = get_next_line(fd))
+    if (data->map_len = get_next_line(fd))
         i++;
     len_to_cmp = get_next_line(fd);
     while (len_to_cmp)
     {
-        // if (ft_strlen(len_to_cmp) != ft_strlen(data->map_line_to_cmp));
-        //     return 0;
         len_to_cmp = get_next_line(fd);
         if (len_to_cmp)
             free (len_to_cmp);
         i++;
     }
     close (fd);
-    free (data->map_line_to_cmp);
+    data->map_lines = i;
+    //free (data->map_len);
     return (i);
 }
  
@@ -64,7 +63,7 @@ int game_resolution (t_data *data)
             if (data->map[i][j] == '1')
                 mlx_put_image_to_window(data->mlx, data->win, data->wall, x, y);
             if (data->map[i][j] == 'P')
-                (mlx_put_image_to_window(data->mlx, data->win, data->player, x, y)), (data->player_x = i), (data->player_y = j);
+                (mlx_put_image_to_window(data->mlx, data->win, data->player, x, y));
             if (data->map[i][j] == 'M')
                 mlx_put_image_to_window(data->mlx, data->win, data->enemy, x, y);
             if (data->map[i][j] == 'C')
@@ -109,6 +108,8 @@ int main (int ac, char **av)
     win_len = (ft_strlen(data->map[0]) * SIZE) - SIZE;
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, win_len, win_len / 2, "so_long");
+    if (!map_checker(data))
+        clean_exit(data);
     imges (data);
     game_resolution (data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);

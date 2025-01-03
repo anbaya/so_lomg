@@ -14,8 +14,9 @@ typedef struct s_data
     void *win;
     int player_x;
     int player_y;
-    char *map_line_to_cmp;
+    char *map_len;
     char **map;
+    char **map2;
     void *floor;
     void *wall;
     void *player;
@@ -23,6 +24,8 @@ typedef struct s_data
     void *coin;
     void *exit;
     int key;
+    int map_lines;
+    int coins;
 }t_data;
 
 # define SIZE 40
@@ -46,10 +49,16 @@ int count_lines(char *map, t_data *data);
 char **map_reader(char *map, t_data *data);
 int game_resolution (t_data *data);
 int game_controlls(t_data *data);
+char	*ft_strdup(char *src);
+char **map_dup(t_data *data);
 void imges(t_data *data);
 int key_w(t_data *data);
 int key_s(t_data *data);
 int key_a(t_data *data);
 int key_d(t_data *data);
+int map_checker(t_data *data);
+int exit_finder(t_data *data, char **map, int x, int y);
+int coin_counter(t_data *data,char **map);
+void clean_exit(t_data *data);
 
 #endif
