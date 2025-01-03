@@ -50,6 +50,7 @@ char **map_reader(char *map, t_data *data);
 int game_resolution (t_data *data);
 int game_controlls(t_data *data);
 char	*ft_strdup(char *src);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 char **map_dup(t_data *data);
 void imges(t_data *data);
 int key_w(t_data *data);

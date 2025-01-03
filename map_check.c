@@ -11,7 +11,7 @@ int coin_counter(t_data *data,char **map)
     while (i <= data->map_lines)
     {
         j = 0;
-        while (j <= data->map_len)
+        while (j <= ft_strlen(data->map_len))
         {
             if (map[i][j] == 'C')
                 coins++;
@@ -26,7 +26,7 @@ int exit_finder(t_data *data, char **map, int x, int y)
     static int c;
     static int e;
 
-    if (x < 0 || x > data->map_len || y < 0 
+    if (x < 0 || x > ft_strlen(data->map_len) || y < 0 
     || y > data-> map_lines || map[x][y] == 'X' 
     || map[x][y] == '1' || map[x][y] == 'M')
         return (0);
