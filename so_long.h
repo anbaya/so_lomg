@@ -59,8 +59,8 @@ int key_s(t_data *data);
 int key_a(t_data *data);
 int key_d(t_data *data);
 int map_checker(t_data *data);
-int exit_finder(t_data *data, char **map, int x, int y);
-int coin_counter(t_data *data,char **map);
+int coin_counter(t_data *data);
+int exit_finder(t_data *data, int x, int y);
 void clean_exit(t_data *data);
 
 #endif

@@ -107,16 +107,19 @@ int main (int ac, char **av)
         return (0);
     }
     data->map = map_reader("map.ber" , data);
+    data->map2 = NULL;
     data->len = ft_strlen(data->map[0]);
+    find_player_position(data);
     win_len = (data->len * SIZE) - SIZE;
     data->mlx = mlx_init ();
-    data->win = mlx_new_window (data->mlx, win_len, win_len / 2, "so_long");
+    data->win = mlx_new_window (data->mlx, win_len + SIZE, win_len / 2 + (SIZE / 2), "so_long");
+    imges (data);
     if (!map_checker(data))
     {
         perror ("invalid map!!");
         clean_exit(data);
     }
-    imges (data);
+
     game_resolution (data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);
     mlx_hook(data->win, 3, (1L<<1), key_release, data);

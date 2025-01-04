@@ -21,14 +21,22 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 char	*ft_strdup(char *src)
 {
 	char	*dest;
-	size_t	size;
+	int		i;
+	int		len;
 
-	size = ft_strlen(src);
-	dest = (char *)malloc(size * sizeof(char) + 1);
+	len = ft_strlen(src);
+	dest = malloc(sizeof(char) * (len + 1));
 	if (!dest)
-		return (0);
-	ft_memcpy(dest, src, size);
-	dest[size] = '\0';
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (src[i] != 0)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -39,12 +47,14 @@ char **map_dup(t_data *data)
     
     if (!data->map)
 		return (0);
-	map = malloc(sizeof(char *) * data->map_lines);
+	map = malloc(sizeof(char *) * data->map_lines + 1);
     i = 0;
-    while (i++ < data->map_lines)
+    while (i < data->map_lines)
     {
         map[i] = ft_strdup(data->map[i]);
+        i++;
     }
+    map[i] = NULL;
     return (map);
 }
 int find_player_position(t_data *data)
@@ -59,8 +69,8 @@ int find_player_position(t_data *data)
         {
             if (data->map[i][j] == 'P')
             {
-                data->player_x = j;
-                data->player_y = i;
+                data->player_x = i;
+                data->player_y = j;
                 return (1);
             }
             j++;

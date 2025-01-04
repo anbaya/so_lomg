@@ -3,7 +3,10 @@
 int key_press(int key_code, t_data *data)
 {
     if (key_code == 65307)
-        clean_exit(data);
+    {
+        mlx_destroy_window(data->mlx, data->win);
+        exit (0);
+    }
     data->key = key_code;
     return (0);
 }
