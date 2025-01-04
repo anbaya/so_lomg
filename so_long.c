@@ -78,13 +78,17 @@ int game_resolution (t_data *data)
 
 int game_controlls(t_data *data)
 {
-    if (data->key == 97 && (data->map[data->player_x][data->player_y - 1] != '1')) // 'A' key and its not wall
+    if (data->key == 97 && (data->map[data->player_x][data->player_y - 1] != '1') 
+    && (data->player_y - 1 >= 0)) // 'A' key and its not wall
         key_a(data);
-    if (data->key == 100 && (data->map[data->player_x][data->player_y + 1] != '1')) // 'D' key and its not wall
+    if (data->key == 100 && (data->map[data->player_x][data->player_y + 1] != '1') 
+    && (data->player_y + 1 <= data->len)) // 'D' key and its not wall
         key_d(data);
-    if (data->key == 119 && (data->map[data->player_x - 1][data->player_y] != '1')) // 'W' key and its not wall
+    if (data->key == 119 && (data->map[data->player_x - 1][data->player_y] != '1') 
+    && data->player_x - 1 >= 0) // 'W' key and its not wall
         key_w(data);
-    if (data->key == 115 && (data->map[data->player_x + 1][data->player_y] != '1')) // 'S' key and its not wall
+    if (data->key == 115 && (data->map[data->player_x + 1][data->player_y] != '1')
+    && data->player_x + 1 <= data->map_lines) // 'S' key and its not wall
         key_s(data);
     if (data->key != 0)
     {
@@ -96,7 +100,6 @@ int game_controlls(t_data *data)
 
 int main (int ac, char **av)
 {
-    int win_len;
     int fd_map;
     t_data *data;
 
@@ -110,9 +113,9 @@ int main (int ac, char **av)
     data->map2 = NULL;
     data->len = ft_strlen(data->map[0]);
     find_player_position(data);
-    win_len = (data->len * SIZE) - SIZE;
+    data->win_len = (data->len * SIZE) - SIZE;
     data->mlx = mlx_init ();
-    data->win = mlx_new_window (data->mlx, win_len + SIZE, win_len / 2 + (SIZE / 2), "so_long");
+    data->win = mlx_new_window (data->mlx, data->win_len + SIZE, data->win_len / 2 + (SIZE / 2), "so_long");
     imges (data);
     if (!map_checker(data))
     {

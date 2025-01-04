@@ -22,11 +22,13 @@ typedef struct s_data
     void *player;
     void *enemy;
     void *coin;
+    int points;
     void *exit;
     int key;
     int map_lines;
     int coins;
     int len;
+    int win_len;
 }t_data;
 
 # define SIZE 40
@@ -40,6 +42,7 @@ typedef struct s_data
 int key_press(int key_code, t_data *data);
 int key_release(int key_code, t_data *data);
 size_t	ft_strlen(const char *s);
+void enemy(t_data *data);
 int find_player_position(t_data *data);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, size_t start, size_t len);
@@ -61,6 +64,7 @@ int key_d(t_data *data);
 int map_checker(t_data *data);
 int coin_counter(t_data *data);
 int exit_finder(t_data *data, int x, int y);
+void the_exit(t_data *data);
 void clean_exit(t_data *data);
 
 #endif
