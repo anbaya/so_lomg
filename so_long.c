@@ -14,9 +14,9 @@ int count_lines(char *map, t_data *data)
     len_to_cmp = get_next_line(fd);
     while (len_to_cmp)
     {
-        len_to_cmp = get_next_line(fd);
         if (len_to_cmp)
             free (len_to_cmp);
+        len_to_cmp = get_next_line(fd);
         i++;
     }
     close (fd);
@@ -34,12 +34,12 @@ char **map_reader(char *map, t_data *data)
     lines = count_lines (map, data);
     if (!lines)
         return (0);
-    str_map = malloc(sizeof (char *) * lines);
+    str_map = (char **)malloc(sizeof (char *) * lines+1);
     if (!str_map)
         return (0);
     i = 0;
     fd = open(map, O_RDONLY, 0777);
-    while (i < lines)
+    while (i <= lines)
     {
         str_map[i] = get_next_line(fd);
         i++;
@@ -121,13 +121,13 @@ int main (int ac, char **av)
     if (!map_checker(data))
     {
         perror ("invalid map!!");
-        clean_exit(data);
+        clean_exit(&data);
         return (0);
     }
     game_resolution (data);
-    clean_exit(data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);
     mlx_hook(data->win, 3, (1L<<1), key_release, data);
-    mlx_loop_hook(data->mlx, game_controlls, data);
+    mlx_loop_hook(data->mlx, game_controlls, data);    
     mlx_loop(data->mlx);
+
 }

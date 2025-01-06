@@ -66,6 +66,6 @@ int coin_counter(t_data *data);
 int exit_finder(t_data *data, int x, int y);
 void the_exit(t_data *data);
 void	ft_free_map(int lines, char **map);
-void clean_exit(t_data *data);
+void clean_exit(t_data **data);
 
 #endif

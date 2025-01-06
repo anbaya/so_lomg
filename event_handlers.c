@@ -3,7 +3,7 @@
 int key_press(int key_code, t_data *data)
 {
     if (key_code == 65307)
-        clean_exit(data);
+        clean_exit(&data);
     data->key = key_code;
     return (0);
 }

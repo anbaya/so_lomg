@@ -3,5 +3,5 @@
 void enemy(t_data *data)
 {
     perror("you dead !");
-    clean_exit(data);
+    clean_exit(&data);
 }
