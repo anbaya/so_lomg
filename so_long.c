@@ -8,7 +8,8 @@ int count_lines(char *map, t_data *data)
 
     i = 0;
     fd = open (map, O_RDONLY, 0777);
-    if (data->map_len = get_next_line(fd))
+    data->map_len = get_next_line(fd);
+    if (data->map_len)
         i++;
     len_to_cmp = get_next_line(fd);
     while (len_to_cmp)
@@ -124,6 +125,7 @@ int main (int ac, char **av)
         return (0);
     }
     game_resolution (data);
+    clean_exit(data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);
     mlx_hook(data->win, 3, (1L<<1), key_release, data);
     mlx_loop_hook(data->mlx, game_controlls, data);
