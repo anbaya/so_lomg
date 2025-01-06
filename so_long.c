@@ -63,11 +63,11 @@ int game_resolution (t_data *data)
             if (data->map[i][j] == '1')
                 mlx_put_image_to_window(data->mlx, data->win, data->wall, x, y);
             if (data->map[i][j] == 'P')
-                (mlx_put_image_to_window(data->mlx, data->win, data->player, x, y));
+                draw_player(data, x, y);
             if (data->map[i][j] == 'M')
-                mlx_put_image_to_window(data->mlx, data->win, data->enemy, x, y);
+                draw_enemy(data, x, y);
             if (data->map[i][j] == 'C')
-                mlx_put_image_to_window(data->mlx, data->win, data->coin, x, y);
+                draw_coin(data, x, y);
             if (data->map[i][j] == 'E')
                 mlx_put_image_to_window(data->mlx, data->win, data->exit, x, y);
             (j++), (x += SIZE);
