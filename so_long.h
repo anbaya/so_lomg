@@ -30,6 +30,7 @@ typedef struct s_data
     int coins;
     int len;
     int win_len;
+    char *str;
 }t_data;
 
 # define SIZE 40
@@ -50,6 +51,8 @@ char	*ft_substr(char const *s, size_t start, size_t len);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 void	ft_putnbr(int n);
 void ft_putchar(char c);
+int	ft_atoi(const char *str);
+char	*ft_itoa(int n);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 char	*get_next_line(int fd);
 int count_lines(char *map, t_data *data);

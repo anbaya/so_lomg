@@ -84,22 +84,3 @@ int find_player_position(t_data *data)
     }
     return (0);
 }
-
-void	ft_putnbr(int n)
-{
-	long	nb;
-
-	nb = (long int)n;
-	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb *= -1;
-	}
-	if (nb < 10)
-		ft_putchar(nb + '0');
-	else
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-}

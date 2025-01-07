@@ -74,6 +74,7 @@ int game_resolution (t_data *data)
         }
         (i++), (y += SIZE), (j = 0), (x = 0);
     }
+    mlx_string_put(data->mlx, data->win, 20, 20, 0xFF0000, data->str);
     return (0);
 }
 
@@ -118,6 +119,7 @@ int main (int ac, char **av)
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, data->win_len + SIZE, data->win_len / 2 + (SIZE / 2), "so_long");
     data->move = 0;
+    data->str = ft_itoa(data->move);
     imges (data);
     if (!map_checker(data))
     {
