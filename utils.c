@@ -1,5 +1,10 @@
 #include "so_long.h"
 
+void ft_putchar(char c)
+{
+	write (1, &c, 1);
+}
+
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
@@ -78,4 +83,23 @@ int find_player_position(t_data *data)
         i++;
     }
     return (0);
+}
+
+void	ft_putnbr(int n)
+{
+	long	nb;
+
+	nb = (long int)n;
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb *= -1;
+	}
+	if (nb < 10)
+		ft_putchar(nb + '0');
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
 }

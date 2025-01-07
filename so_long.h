@@ -10,6 +10,7 @@
 
 typedef struct s_data
 {
+    int move;
     void *mlx;
     void *win;
     int player_x;
@@ -47,6 +48,8 @@ int find_player_position(t_data *data);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, size_t start, size_t len);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+void	ft_putnbr(int n);
+void ft_putchar(char c);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 char	*get_next_line(int fd);
 int count_lines(char *map, t_data *data);

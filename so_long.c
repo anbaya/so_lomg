@@ -117,6 +117,7 @@ int main (int ac, char **av)
     data->win_len = (data->len * SIZE) - SIZE;
     data->mlx = mlx_init ();
     data->win = mlx_new_window (data->mlx, data->win_len + SIZE, data->win_len / 2 + (SIZE / 2), "so_long");
+    data->move = 0;
     imges (data);
     if (!map_checker(data))
     {
