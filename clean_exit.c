@@ -21,27 +21,31 @@ void player_free(t_data *data)
 	int i;
 
 	i = 0;
-	while (data->player[i])
+	while (i < 6)
 	{
 		if (data->player[i])
-			free (data->player[i]);
+			mlx_destroy_image(data->mlx, data->player[i]);
 		i++;
 	}
+}
+void free_images(t_data *data)
+{
+	if (data->wall)
+		mlx_destroy_image(data->mlx, data->wall);
+	if (data->floor)
+		mlx_destroy_image(data->mlx, data->floor);
+	if (data->exit)
+		mlx_destroy_image(data->mlx, data->exit);
+	if (data->enemy)
+		mlx_destroy_image(data->mlx, data->enemy);
+	if (data->coin)
+		mlx_destroy_image(data->mlx, data->coin);
 }
 
 void clean_exit(t_data **data)
 {
+	free_images((*data));
 	player_free((*data));
-	if ((*data)->wall)
-		mlx_destroy_image((*data)->mlx, (*data)->wall);
-	if ((*data)->floor)
-		mlx_destroy_image((*data)->mlx, (*data)->floor);
-	if ((*data)->exit)
-		mlx_destroy_image((*data)->mlx, (*data)->exit);
-	if ((*data)->enemy)
-		mlx_destroy_image((*data)->mlx, (*data)->enemy);
-	if ((*data)->coin)
-		mlx_destroy_image((*data)->mlx, (*data)->coin);
     if ((*data)->map)
 		ft_free_map((*data)->map_lines, (*data)->map);
 	if ((*data)->map2)
@@ -53,6 +57,8 @@ void clean_exit(t_data **data)
     if ((*data)->map_len)
         free ((*data)->map_len);
 	free((*data)->mlx);
+	if ((*data)->str)
+		free ((*data)->str);
     free (*data);
 	exit(0);
 }

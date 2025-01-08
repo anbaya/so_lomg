@@ -86,6 +86,7 @@ void draw_coin(t_data *data, int x, int y);
 int exit_finder(t_data *data, int x, int y);
 void the_exit(t_data *data);
 int clear_win(t_data *data);
+void free_images(t_data *data);
 void player_free(t_data *data);
 int player_sprite(t_data *data);
 void	ft_free_map(int lines, char **map);
