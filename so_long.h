@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "get_next_line.h"
+#include <limits.h>
 
 typedef struct s_data
 {
@@ -20,7 +21,7 @@ typedef struct s_data
     char **map2;
     void *floor;
     void *wall;
-    void *player;
+    void *player[6];
     void *enemy;
     void *coin;
     int points;
@@ -31,15 +32,25 @@ typedef struct s_data
     int len;
     int win_len;
     char *str;
+    int frame;
+    int x;
+    int y;
 }t_data;
 
 # define SIZE 40
+# define PLAYER_FRAME 5
 # define WALL "textures/wall.xpm"
 # define FLOOR "textures/floor.xpm"
 # define PLAYER "textures/player.xpm"
 # define EXIT "textures/exit.xpm"
 # define ENEMY "textures/enemy.xpm"
 # define COIN "textures/coin.xpm"
+# define PLAYER0 "textures/player/player0.xpm"
+# define PLAYER1 "textures/player/player1.xpm"
+# define PLAYER2 "textures/player/player2.xpm"
+# define PLAYER3 "textures/player/player3.xpm"
+# define PLAYER4 "textures/player/player4.xpm"
+# define PLAYER5 "textures/player/player5.xpm"
 
 int key_press(int key_code, t_data *data);
 int key_release(int key_code, t_data *data);
@@ -74,6 +85,9 @@ void draw_enemy(t_data *data, int x, int y);
 void draw_coin(t_data *data, int x, int y);
 int exit_finder(t_data *data, int x, int y);
 void the_exit(t_data *data);
+int clear_win(t_data *data);
+void player_free(t_data *data);
+int player_sprite(t_data *data);
 void	ft_free_map(int lines, char **map);
 void clean_exit(t_data **data);
 

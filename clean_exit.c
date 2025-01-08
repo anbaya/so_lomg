@@ -16,11 +16,22 @@ void	ft_free_map(int lines, char **map)
 	}
 	free(map);
 }
+void player_free(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (data->player[i])
+	{
+		if (data->player[i])
+			free (data->player[i]);
+		i++;
+	}
+}
 
 void clean_exit(t_data **data)
 {
-    if ((*data)->player)
-		mlx_destroy_image((*data)->mlx, (*data)->player);
+	player_free((*data));
 	if ((*data)->wall)
 		mlx_destroy_image((*data)->mlx, (*data)->wall);
 	if ((*data)->floor)
