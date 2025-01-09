@@ -52,26 +52,27 @@ typedef struct s_data
 # define PLAYER4 "textures/player/player4.xpm"
 # define PLAYER5 "textures/player/player5.xpm"
 
+int data_init(t_data *data, char *map);
 int key_press(int key_code, t_data *data);
 int key_release(int key_code, t_data *data);
-size_t	ft_strlen(const char *s);
+int	ft_strlen(const char *s);
 void enemy(t_data *data);
 int find_player_position(t_data *data);
 char	*ft_strchr(const char *s, int c);
-char	*ft_substr(char const *s, size_t start, size_t len);
-size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+char	*ft_substr(char const *s, int start, int len);
+int	ft_strlcpy(char *dest, const char *src, int size);
 void	ft_putnbr(int n);
 void ft_putchar(char c);
 int	ft_atoi(const char *str);
 char	*ft_itoa(int n);
-size_t	ft_strlcat(char *dest, const char *src, size_t size);
+int	ft_strlcat(char *dest, const char *src, int size);
 char	*get_next_line(int fd);
 int count_lines(char *map, t_data *data);
 char **map_reader(char *map, t_data *data);
 int game_resolution (t_data *data);
 int game_controlls(t_data *data);
 char	*ft_strdup(char *src);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
+void *ft_memcpy(void *dest, const void *src, int n);
 char **map_dup(t_data *data);
 void imges(t_data *data);
 int key_w(t_data *data);
@@ -90,6 +91,6 @@ void free_images(t_data *data);
 void player_free(t_data *data);
 int player_sprite(t_data *data);
 void	ft_free_map(int lines, char **map);
-void clean_exit(t_data **data);
+void clean_exit(t_data *data);
 
 #endif

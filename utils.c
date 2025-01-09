@@ -5,9 +5,9 @@ void ft_putchar(char c)
 	write (1, &c, 1);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void *ft_memcpy(void *dest, const void *src, int n)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!dest && !src)

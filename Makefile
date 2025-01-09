@@ -1,26 +1,24 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror 
-NAME = solong
-SRCS = main.c 
-MLX_DIR = ./minilibx-linux
-MLX = $(MLX_DIR)/libmlx_Linux.a
-MLX_FLAGS = -L$(MLX_DIR) -lmlx_Linux -L/usr/X11R6/lib -lXext -lX11 -lm -lbsd
-
-OBJS = $(SRCS:.c=.o)
+FLAGS = -Wall -Wextra -Werror
+SRC = so_long.c data_init.c clean_exit.c clear_win.c \
+        draw_player.c movements.c enemy.c event_handlers.c \
+        exit.c ft_itoa.c get_next_line.c utils.c utils2.c\
+        get_next_line_utils.c imges.c map_check.c player_sprite.c
+OBJ = $(SRC:.c=.o)
+NAME = so_long
+HEADER = so_long.h get_next_line.h mlx.h
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-    $(CC) $(CFLAGS) $(SRCS) $(MLX) $(MLX_FLAGS) -o $(NAME)
-
-%.o: %.c
-    $(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJ)
+	$(CC) $(FLAGS) $(SRC) $(HEADER) -Llibmlx_Linux.a -lmlx_Linux -L/usr/X11R6/lib -lXext -lX11 -lm $< -o $@
 
 clean:
-    rm -f $(OBJS) $(BONUS_OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
-    rm -f $(NAME) $(NAME)_bonus
-    clean -C $(MLX_DIR)
+	rm -f $(NAME)
 
-re: fclean all
+re: clean fclean all
+
+.PHONY: all clean fclean re

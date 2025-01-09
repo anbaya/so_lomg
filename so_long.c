@@ -53,7 +53,6 @@ int game_resolution (t_data *data)
     int (i), (j), (x), (y);
 
     (i = 0), (j = 0), (x = 0), (y = 0);
-    //mlx_clear_window(data->mlx, data->win);
     while(data->map[i])
     {
         while (data->map[i][j])
@@ -105,32 +104,26 @@ int game_controlls(t_data *data)
 
 int main (int ac, char **av)
 {
-    int fd_map;
     t_data *data;
 
+    if (ac != 2)
+    {
+        perror("invalid inpot!");
+        exit (0);
+    }
     data = malloc(sizeof(t_data));
     if (!data)
     {
         perror ("memory error!!");
         return (0);
     }
-    data->map = map_reader("map.ber" , data);
-    data->map2 = NULL;
-    data->len = ft_strlen(data->map[0]);
+    data_init(data, av[1]);
     find_player_position(data);
-    data->win_len = (data->len * SIZE) - SIZE;
-    data->mlx = mlx_init ();
-    data->win = mlx_new_window (data->mlx, data->win_len + SIZE, data->win_len / 2 + (SIZE / 2), "so_long");
-    data->move = 0;
-    data->str = ft_itoa(data->move);
-    data->frame = 0;
-    data->x = 0;
-    data->y = 0;
     imges (data);
     if (!map_checker(data))
     {
         perror ("invalid map!!");
-        clean_exit(&data);
+        clean_exit(data);
         return (0);
     }
     game_resolution (data);

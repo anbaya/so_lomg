@@ -8,5 +8,5 @@ void enemy(t_data *data)
     ft_putnbr(data->move);
     write (1, "\n", 1);
     perror("you dead !");
-    clean_exit(&data);
+    clean_exit(data);
 }

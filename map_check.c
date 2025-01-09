@@ -53,7 +53,6 @@ int exit_finder(t_data *data, int x, int y)
 int map_checker(t_data *data)
 {
     int i;
-    int j;
     
     data->map2 = map_dup(data);
     if (!data->map2)
@@ -63,7 +62,6 @@ int map_checker(t_data *data)
     return (0);
     while (i < data->map_lines)
     {
-        j = ft_strlen(data->map[i]);
         if (ft_strlen(data->map[i]) != data->len)
             return (0);
         i++;

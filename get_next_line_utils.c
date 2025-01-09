@@ -12,9 +12,9 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	if (!s)
 		return (0);
@@ -24,13 +24,13 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_substr(char const *s, size_t start, size_t len)
+char	*ft_substr(char const *s, int start, int len)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 	char	*sub;
 
-	i = (size_t)start;
+	i = (int)start;
 	if (!s)
 		return (NULL);
 	if (start >= ft_strlen(s))
@@ -52,8 +52,8 @@ char	*ft_substr(char const *s, size_t start, size_t len)
 
 char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 	char	*r;
 
 	r = (char *)s;
@@ -68,10 +68,10 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+int	ft_strlcpy(char *dest, const char *src, int size)
 {
-	size_t	i;
-	size_t	src_len;
+	int	i;
+	int	src_len;
 
 	src_len = ft_strlen(src);
 	if (!size)
@@ -86,12 +86,12 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (src_len);
 }
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+int	ft_strlcat(char *dest, const char *src, int size)
 {
-	size_t	i;
-	size_t	j;
-	size_t	src_len;
-	size_t	dest_len;
+	int	i;
+	int	j;
+	int	src_len;
+	int	dest_len;
 
 	src_len = ft_strlen(src);
 	if (!size)
