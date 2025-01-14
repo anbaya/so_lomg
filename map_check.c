@@ -50,10 +50,26 @@ int exit_finder(t_data *data, int x, int y)
 	else
 		return (0);
 }
+void	ft_lines_and_map_len(t_data *data)
+{
+    int i;
+    i = ft_strlen (data->map_len);
+	if (data->map_lines < 3 || data->map_lines * SIZE > 1080)
+	{
+		perror ("invalid map size");
+		clean_exit (data);
+	}
+	if (i < 3 || i * SIZE > 1920)
+	{
+		perror ("invalid map size");
+		clean_exit (data);
+	}
+}
 int map_checker(t_data *data)
 {
     int i;
     
+    ft_lines_and_map_len (data);
     data->map2 = map_dup(data);
     if (!data->map2)
         return (0);
