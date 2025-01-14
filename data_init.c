@@ -7,7 +7,7 @@ int data_init(t_data *data, char *map)
     data->len = ft_strlen(data->map[0]);
     data->win_len = (data->len * SIZE) - SIZE;
     data->mlx = mlx_init ();
-    data->win = mlx_new_window (data->mlx, data->win_len + SIZE, data->win_len / 2 + (SIZE / 2), "so_long");
+    data->win = mlx_new_window (data->mlx,SIZE * ft_strlen(data->map_len) , data->map_lines * SIZE, "so_long");
     data->move = 0;
     data->str = ft_itoa(data->move);
     data->frame = 0;
