@@ -11,7 +11,7 @@ HEADER = so_long.h get_next_line.h mlx.h
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(SRC) $(HEADER) -Llibmlx_Linux.a -lmlx_Linux -L/usr/X11R6/lib -lXext -lX11 -lm $< -o $@
+	$(CC) $(FLAGS) $(OBJ) -Llibmlx_Linux.a -lmlx_Linux -L/usr/X11R6/lib -lXext -lX11 -lm -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
@@ -22,3 +22,4 @@ fclean: clean
 re: clean fclean all
 
 .PHONY: all clean fclean re
+.SECONDARY:
