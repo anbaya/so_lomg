@@ -2,9 +2,9 @@
 
 int	ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	r;
-	size_t	sign;
+	int	i;
+	int	r;
+	int	sign;
 	char	*s;
 
 	s = (char *)str;
@@ -45,4 +45,26 @@ void	ft_putnbr(int n)
 		ft_putnbr(nb / 10);
 		ft_putnbr(nb % 10);
 	}
+}
+char	*ft_strnstr(const char *haystack, const char *needle, int len)
+{
+	int	i;
+	int	j;
+
+	if (*needle == '\0')
+		return ((char *)haystack);
+	i = 0;
+	while (haystack[i] && i < len)
+	{
+		if (haystack[i] == needle[0])
+		{
+			j = 0;
+			while (needle[j] && haystack[i + j] == needle[j] && (i + j) < len)
+				j++;
+			if (j == ft_strlen(needle))
+				return ((char *)&haystack[i]);
+		}
+		i++;
+	}
+	return (NULL);
 }

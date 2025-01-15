@@ -2,6 +2,12 @@
 
 int data_init(t_data *data, char *map)
 {
+    if (!ft_strnstr(map, ".ber", ft_strlen(map)));
+    {
+        free (data);
+        perror ("invalid map!!");
+        exit (0);
+    }
     data->map = map_reader(map , data);
     data->map2 = NULL;
     data->len = ft_strlen(data->map[0]);

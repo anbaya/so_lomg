@@ -118,14 +118,14 @@ int main (int ac, char **av)
         return (0);
     }
     data_init(data, av[1]);
-    find_player_position(data);
-    imges (data);
     if (!map_checker(data))
     {
         perror ("invalid map!!");
         clean_exit(data);
         return (0);
     }
+    find_player_position(data);
+    imges (data);
     game_resolution (data);
     mlx_hook(data->win, 2, (1L<<0), key_press, data);
     mlx_hook(data->win, 3, (1L<<1), key_release, data);

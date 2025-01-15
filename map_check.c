@@ -65,6 +65,27 @@ void	ft_lines_and_map_len(t_data *data)
 		clean_exit (data);
 	}
 }
+int is_it_map(char **map)
+{
+	int i;
+    int j;
+
+	i = 0;
+    while (map[i])
+    {
+        j = 0;
+        while(map[i][j])
+        {
+            if (map[i][j] != '1' || map[i][j] != '0' || map[i][j] != 'P' 
+            || map[i][j] != 'M' || map[i][j] != 'E' || map[i][j] != 'C')
+                return (0);
+            j++;
+        }
+        i++;
+    }
+    return (1);
+}
+
 int map_checker(t_data *data)
 {
     int i;
