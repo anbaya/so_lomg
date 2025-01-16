@@ -94,6 +94,6 @@ void player_free(t_data *data);
 int player_sprite(t_data *data);
 void	ft_lines_and_map_len(t_data *data);
 void	ft_free_map(int lines, char **map);
-void clean_exit(t_data *data);
+int clean_exit(t_data *data);
 
 #endif

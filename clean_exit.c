@@ -6,7 +6,7 @@ void	ft_free_map(int lines, char **map)
 
 	i = 0;
 
-	while (i < lines)
+	while (i <= lines)
 	{
 		if (map[i])
 		{
@@ -42,7 +42,7 @@ void free_images(t_data *data)
 		mlx_destroy_image(data->mlx, data->coin);
 }
 
-void clean_exit(t_data *data)
+int clean_exit(t_data *data)
 {
 	free_images(data);
 	player_free(data);
@@ -63,6 +63,8 @@ void clean_exit(t_data *data)
 		free (data->str);
 	}
 	free(data->mlx);
+	if (data->str)
+		free (data->str);
     free (data);
 	exit(0);
 }

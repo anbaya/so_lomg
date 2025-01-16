@@ -74,6 +74,7 @@ int game_resolution (t_data *data)
         (i++), (y += SIZE), (j = 0), (x = 0);
     }
     mlx_string_put(data->mlx, data->win, 20, 20, 0xFF0000, data->str);
+    free(data->str);
     return (0);
 }
 
@@ -92,7 +93,8 @@ int game_controlls(t_data *data)
     && data->player_x + 1 <= data->map_lines) // 'S' key and its not wall
         key_s(data);
     clear_win(data);
-    if (data->key != 0)
+    if (data->key == 97 || data->key == 100 || data->key == 119 
+    || data->key == 115)
     {
         game_resolution(data);
         data->key = 0;
@@ -120,11 +122,11 @@ int main (int ac, char **av)
             perror ("invalid map!!");
             clean_exit(data);
         }
-        find_player_position(data);
         imges (data);
         game_resolution (data);
         mlx_hook(data->win, 2, (1L<<0), key_press, data);
         mlx_hook(data->win, 3, (1L<<1), key_release, data);
+        mlx_hook(data->win, 17, 0, clean_exit, data);
         mlx_loop_hook(data->mlx, game_controlls, data);    
         mlx_loop(data->mlx);
     }
