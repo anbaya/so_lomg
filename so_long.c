@@ -7,7 +7,7 @@ int count_lines(char *map, t_data *data)
     char *len_to_cmp;
 
     i = 0;
-    fd = open (map, O_RDONLY, 0777);
+    fd = open (map, O_RDONLY);
     data->map_len = get_next_line(fd);
     if (data->map_len)
         i++;
@@ -34,12 +34,12 @@ char **map_reader(char *map, t_data *data)
     lines = count_lines (map, data);
     if (!lines)
         return (0);
-    str_map = (char **)malloc(sizeof (char *) * lines+1);
+    str_map = (char **)malloc(sizeof (char *) * (lines + 1));
     if (!str_map)
         return (0);
     i = 0;
-    fd = open(map, O_RDONLY, 0777);
-    while (i <= lines)
+    fd = open(map, O_RDONLY);
+    while (i < lines)
     {
         str_map[i] = get_next_line(fd);
         i++;
@@ -106,30 +106,27 @@ int main (int ac, char **av)
 {
     t_data *data;
 
-    if (ac != 2)
-    {
-        perror("invalid inpot!");
-        exit (0);
+    if (ac == 2)
+    { 
+        data = malloc(sizeof(t_data));
+        if (!data)
+        {
+            perror ("memory error!!");
+            return (0);
+        }
+        data_init(data, av[1]);
+        if (!map_checker(data))
+        {
+            perror ("invalid map!!");
+            clean_exit(data);
+        }
+        find_player_position(data);
+        imges (data);
+        game_resolution (data);
+        mlx_hook(data->win, 2, (1L<<0), key_press, data);
+        mlx_hook(data->win, 3, (1L<<1), key_release, data);
+        mlx_loop_hook(data->mlx, game_controlls, data);    
+        mlx_loop(data->mlx);
     }
-    data = malloc(sizeof(t_data));
-    if (!data)
-    {
-        perror ("memory error!!");
-        return (0);
-    }
-    data_init(data, av[1]);
-    if (!map_checker(data))
-    {
-        perror ("invalid map!!");
-        clean_exit(data);
-        return (0);
-    }
-    find_player_position(data);
-    imges (data);
-    game_resolution (data);
-    mlx_hook(data->win, 2, (1L<<0), key_press, data);
-    mlx_hook(data->win, 3, (1L<<1), key_release, data);
-    mlx_loop_hook(data->mlx, game_controlls, data);    
-    mlx_loop(data->mlx);
-
+    return (perror("no input"), 0);
 }

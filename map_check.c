@@ -76,8 +76,8 @@ int is_it_map(char **map)
         j = 0;
         while(map[i][j])
         {
-            if (map[i][j] != '1' || map[i][j] != '0' || map[i][j] != 'P' 
-            || map[i][j] != 'M' || map[i][j] != 'E' || map[i][j] != 'C')
+            if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'P' 
+            && map[i][j] != 'M' && map[i][j] != 'E' && map[i][j] != 'C')
                 return (0);
             j++;
         }
