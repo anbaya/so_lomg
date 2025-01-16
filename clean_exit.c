@@ -5,7 +5,6 @@ void	ft_free_map(int lines, char **map)
 	int	i;
 
 	i = 0;
-
 	while (i <= lines)
 	{
 		if (map[i])
@@ -58,14 +57,9 @@ int clean_exit(t_data *data)
 	{
         free (data->map_len);
 	}
-	if (data->str)
-	{
-		free (data->str);
-	}
 	free(data->mlx);
 	if (data->str)
 		free (data->str);
     free (data);
 	exit(0);
 }
-
