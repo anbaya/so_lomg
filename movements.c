@@ -25,6 +25,7 @@ int key_a(t_data *data) // move up
     ft_putnbr(data->move);
     data->str = ft_itoa(data->move);
     write (1, "\n", 1);
+    data->act = 1;
     return (0);    
 }
 
@@ -53,6 +54,7 @@ int key_d(t_data *data) // move down
     ft_putnbr(data->move);
     data->str = ft_itoa(data->move);
     write (1, "\n", 1);
+    data->act = 1;
     return (0);    
 }
 
@@ -81,6 +83,7 @@ int key_w(t_data *data) // move left
     ft_putnbr(data->move);
     data->str = ft_itoa(data->move);
     write (1, "\n", 1);
+    data->act = 1;
     return (0);
 }
 
@@ -109,5 +112,6 @@ int key_s(t_data *data) // move right
     ft_putnbr(data->move);
     data->str = ft_itoa(data->move);
     write (1, "\n", 1);
+    data->act = 1;
     return (0);
 }

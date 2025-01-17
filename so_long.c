@@ -8,6 +8,8 @@ int count_lines(char *map, t_data *data)
 
     i = 0;
     fd = open (map, O_RDONLY);
+    if (fd == -1)
+        return(perror ("invalid input !"), 0);
     data->map_len = get_next_line(fd);
     if (data->map_len)
         i++;
@@ -33,7 +35,7 @@ char **map_reader(char *map, t_data *data)
 
     lines = count_lines (map, data);
     if (!lines)
-        return (0);
+        exit (0);
     str_map = (char **)malloc(sizeof (char *) * (lines + 1));
     if (!str_map)
         return (0);
@@ -74,8 +76,8 @@ int game_resolution (t_data *data)
         (i++), (y += SIZE), (j = 0), (x = 0);
     }
     mlx_string_put(data->mlx, data->win, 20, 20, 0xFF0000, data->str);
-    free(data->str);
-    return (0);
+    free (data->str);
+    return (data->str = NULL, 0);
 }
 
 int game_controlls(t_data *data)
@@ -93,12 +95,13 @@ int game_controlls(t_data *data)
     && data->player_x + 1 <= data->map_lines) // 'S' key and its not wall
         key_s(data);
     clear_win(data);
-    if (data->key == 97 || data->key == 100 || data->key == 119 
-    || data->key == 115)
+    if (data->act == 1)
     {
         game_resolution(data);
         data->key = 0;
+        data->act = 0;
         data->frame++;
+        free (data->str);
     }
     player_sprite(data);
     return (0);

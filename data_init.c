@@ -2,10 +2,10 @@
 
 int data_init(t_data *data, char *map)
 {
-    if (!ft_strnstr(map, ".ber", ft_strlen(map)))
+    if (!map_name(map))
     {
         free (data);
-        perror ("invalid map!!");
+        perror ("invalid map name!!");
         exit (0);
     }
     data->map = map_reader(map , data);
@@ -25,5 +25,6 @@ int data_init(t_data *data, char *map)
     data->frame = 0;
     data->x = 0;
     data->y = 0;
+    data->act = 0;
     return (0);
 }

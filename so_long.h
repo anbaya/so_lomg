@@ -35,6 +35,7 @@ typedef struct s_data
     int frame;
     int x;
     int y;
+    int act;
 }t_data;
 
 # define SIZE 40
@@ -81,6 +82,7 @@ int key_s(t_data *data);
 int key_a(t_data *data);
 int key_d(t_data *data);
 int map_checker(t_data *data);
+int map_name(char *name);
 int coin_counter(t_data *data);
 void draw_player(t_data *data, int x, int y);
 void draw_enemy(t_data *data, int x, int y);
