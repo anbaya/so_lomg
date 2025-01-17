@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anbaya <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/17 23:27:22 by anbaya            #+#    #+#             */
+/*   Updated: 2025/01/17 23:27:46 by anbaya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	r;
-	int	sign;
+	int		i;
+	int		r;
+	int		sign;
 	char	*s;
 
 	s = (char *)str;
@@ -46,6 +58,7 @@ void	ft_putnbr(int n)
 		ft_putnbr(nb % 10);
 	}
 }
+
 char	*ft_strnstr(const char *haystack, const char *needle, int len)
 {
 	int	i;

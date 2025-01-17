@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anbaya <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/17 23:06:58 by anbaya            #+#    #+#             */
+/*   Updated: 2025/01/17 23:37:20 by anbaya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static long int	count_len(long int nb)
@@ -37,7 +49,7 @@ static char	*itoing(char *r, long int nb, long int len)
 char	*ft_itoa(int n)
 {
 	int		nb;
-	long	len;
+	int		len;
 	char	*r;
 
 	if (n == 0)

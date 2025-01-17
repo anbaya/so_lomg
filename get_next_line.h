@@ -21,10 +21,10 @@
 #  define BUFFER_SIZE 1
 # endif
 
-int	ft_strlen(const char *s);
+int		ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, int start, int len);
-int	ft_strlcpy(char *dest, const char *src, int size);
-int	ft_strlcat(char *dest, const char *src, int size);
+int		ft_strlcpy(char *dest, const char *src, int size);
+int		ft_strlcat(char *dest, const char *src, int size);
 char	*get_next_line(int fd);
 #endif

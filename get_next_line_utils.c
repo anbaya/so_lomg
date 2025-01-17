@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anbaya <anbaya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anbaya <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 15:00:31 by anbaya            #+#    #+#             */
-/*   Updated: 2025/01/03 16:33:51 by anbaya           ###   ########.fr       */
+/*   Created: 2025/01/17 22:53:58 by anbaya            #+#    #+#             */
+/*   Updated: 2025/01/17 22:56:45 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	ft_strlen(const char *s)
 
 char	*ft_substr(char const *s, int start, int len)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*sub;
 
 	i = (int)start;
@@ -52,8 +52,8 @@ char	*ft_substr(char const *s, int start, int len)
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*r;
 
 	r = (char *)s;

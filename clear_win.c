@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clear_win.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anbaya <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/17 23:29:30 by anbaya            #+#    #+#             */
+/*   Updated: 2025/01/17 23:29:35 by anbaya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-int clear_win(t_data *data)
+int	clear_win(t_data *data)
 {
-    if (data->frame == 500)
-    {
-        mlx_clear_window(data->mlx, data->win);
-        data->frame = 0;
-    }
-    return (0);
+	if (data->frame == 500)
+	{
+		mlx_clear_window(data->mlx, data->win);
+		data->frame = 0;
+	}
+	return (0);
 }
