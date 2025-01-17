@@ -1,6 +1,6 @@
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-SRC = so_long.c data_init.c clean_exit.c clear_win.c \
+SRC = so_long.c data_init.c clean_exit.c clear_win.c map_name.c \
         draw_player.c movements.c enemy.c event_handlers.c \
         exit.c ft_itoa.c get_next_line.c utils.c utils2.c\
         get_next_line_utils.c imges.c map_check.c player_sprite.c

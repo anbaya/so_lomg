@@ -27,7 +27,7 @@ int exit_finder(t_data *data, int x, int y)
     static int c;
     static int e;
 
-	if (x < 0 || y < 0 || x > data->len || y > data->map_lines
+	if (x < 0 || y < 0 || x > data->len || y >= (data->map_lines)
 		|| data->map2[y][x] == '1' || data->map2[y][x] == 'X')
 		return (0);
 	if (data->map2[y][x] == 'C')
@@ -104,7 +104,7 @@ int map_checker(t_data *data)
         i++;
     }
     data->coins = coin_counter(data);
-    if (data->coins == 0)
+    if (data->coins == 0 || (!map_walls(data, data->map)))
         return (0);
     if(!exit_finder(data, data->player_y, data->player_x))
         return (0);
