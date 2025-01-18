@@ -14,9 +14,9 @@
 # define SO_LONG_H
 
 # include "get_next_line.h"
-# include "mlx.h"
 # include <fcntl.h>
 # include <limits.h>
+# include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -24,6 +24,10 @@
 typedef struct s_data
 {
 	int		move;
+	int		d_i;
+	int		d_j;
+	int		d_x;
+	int		d_y;
 	void	*mlx;
 	void	*win;
 	int		player_x;
@@ -85,6 +89,7 @@ char		*get_next_line(int fd);
 int			count_lines(char *map, t_data *data);
 char		**map_reader(char *map, t_data *data);
 int			game_resolution(t_data *data);
+int			game_drawer(t_data *data);
 int			game_controlls(t_data *data);
 char		*ft_strdup(char *src);
 void		*ft_memcpy(void *dest, const void *src, int n);
