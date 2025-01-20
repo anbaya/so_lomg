@@ -16,15 +16,10 @@ void	ft_free_map(int lines, char **map)
 {
 	int	i;
 
-	i = 0;
-	while (i <= lines)
-	{
+	i = -1;
+	while (++i < lines)
 		if (map[i])
-		{
 			free(map[i]);
-		}
-		i++;
-	}
 	free(map);
 }
 

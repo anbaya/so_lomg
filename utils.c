@@ -64,7 +64,7 @@ char	**map_dup(t_data *data)
 
 	if (!data->map)
 		return (0);
-	map = malloc(sizeof(char *) * data->map_lines + 1);
+	map = malloc(sizeof(char *) * (data->map_lines + 1));
 	i = 0;
 	while (i < data->map_lines)
 	{

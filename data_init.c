@@ -14,6 +14,7 @@
 
 int	data_init(t_data *data, char *map)
 {
+	*data = (t_data){0};
 	if (!map_name(map))
 	{
 		free(data);
