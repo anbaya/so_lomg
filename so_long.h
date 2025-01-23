@@ -102,7 +102,7 @@ int			key_d(t_data *data);
 int			map_checker(t_data *data);
 int			map_name(char *name);
 int			map_walls(t_data *data, char **map);
-int			coin_counter(t_data *data);
+int			coin_counter(t_data *data, char c);
 void		draw_player(t_data *data, int x, int y);
 void		draw_enemy(t_data *data, int x, int y);
 void		draw_coin(t_data *data, int x, int y);

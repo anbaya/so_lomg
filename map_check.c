@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	coin_counter(t_data *data)
+int	coin_counter(t_data *data, char c)
 {
 	int	i;
 	int	j;
@@ -25,7 +25,7 @@ int	coin_counter(t_data *data)
 		j = 0;
 		while (j <= data->len)
 		{
-			if (data->map2[i][j] == 'C')
+			if (data->map2[i][j] == c)
 				coins++;
 			j++;
 		}
@@ -48,7 +48,6 @@ int	exit_finder(t_data *data, int x, int y)
 	{
 		e++;
 		data->map2[y][x] = 'X';
-		return (0);
 	}
 	else if (data->map2[y][x] == 'M')
 		return (0);
@@ -118,7 +117,9 @@ int	map_checker(t_data *data)
 			return (0);
 		i++;
 	}
-	data->coins = coin_counter(data);
+	if (coin_counter(data, 'P') != 1)
+		return (0);
+	data->coins = coin_counter(data, 'C');
 	if (data->coins == 0 || (!map_walls(data, data->map)))
 		return (0);
 	if (!exit_finder(data, data->player_y, data->player_x))
