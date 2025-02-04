@@ -50,7 +50,7 @@ void	free_images(t_data *data)
 		mlx_destroy_image(data->mlx, data->coin);
 }
 
-int	clean_exit(t_data *data)
+int	clean_win_exit(t_data *data)
 {
 	free_images(data);
 	player_free(data);
@@ -71,4 +71,28 @@ int	clean_exit(t_data *data)
 		free(data->str);
 	free(data);
 	exit(0);
+}
+
+int	clean_exit(t_data *data)
+{
+	free_images(data);
+	player_free(data);
+	if (data->map)
+		ft_free_map(data->map_lines, data->map);
+	if (data->map2)
+		ft_free_map(data->map_lines, data->map2);
+	if (data->win)
+	{
+		mlx_clear_window(data->mlx, data->win);
+		mlx_destroy_window(data->mlx, data->win);
+	}
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
+	if (data->map_len)
+		free(data->map_len);
+	free(data->mlx);
+	if (data->str)
+		free(data->str);
+	free(data);
+	exit(1);
 }

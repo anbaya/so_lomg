@@ -6,7 +6,7 @@
 /*   By: anbaya <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 17:17:58 by anbaya            #+#    #+#             */
-/*   Updated: 2025/01/18 17:44:08 by anbaya           ###   ########.fr       */
+/*   Updated: 2025/02/04 21:06:35 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ int	count_lines(char *map, t_data *data)
 	i = 0;
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
-		return (perror("invalid input !"), 0);
+		return (perror("Error :\ninvalid input !"), 0);
 	data->map_len = get_next_line(fd);
+	if (ft_strlen(data->map_len) < 3)
+		return (0);
 	if (data->map_len)
 		i++;
 	len_to_cmp = get_next_line(fd);
@@ -47,7 +49,10 @@ char	**map_reader(char *map, t_data *data)
 
 	lines = count_lines(map, data);
 	if (!lines)
-		exit(0);
+	{
+		perror ("Error :\ninvalid map !!");
+		clean_exit (data);
+	}
 	str_map = (char **)malloc(sizeof(char *) * (lines + 1));
 	if (!str_map)
 		return (0);
@@ -58,6 +63,7 @@ char	**map_reader(char *map, t_data *data)
 		str_map[i] = get_next_line(fd);
 		i++;
 	}
+	free (get_next_line (fd));
 	str_map[i] = NULL;
 	close(fd);
 	return (str_map);
@@ -123,13 +129,13 @@ int	main(int ac, char **av)
 		data = malloc(sizeof(t_data));
 		if (!data)
 		{
-			perror("memory error!!");
-			return (0);
+			perror("Error :\nmemory error!!");
+			exit (1);
 		}
 		data_init(data, av[1]);
 		if (!map_checker(data))
 		{
-			perror("invalid map!!");
+			perror("Error :\ninvalid map!!");
 			clean_exit(data);
 		}
 		imges(data);
@@ -140,5 +146,5 @@ int	main(int ac, char **av)
 		mlx_loop_hook(data->mlx, game_controlls, data);
 		mlx_loop(data->mlx);
 	}
-	return (perror("no input"), 0);
+	return (perror("Error :\nno input"), 0);
 }

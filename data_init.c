@@ -18,15 +18,15 @@ int	data_init(t_data *data, char *map)
 	if (!map_name(map))
 	{
 		free(data);
-		perror("invalid map name!!");
-		exit(0);
+		perror("Error :\ninvalid map name!!");
+		exit(1);
 	}
 	data->map = map_reader(map, data);
 	if (!is_it_map(data->map))
 	{
-		free(data);
-		perror("invalid map!!");
-		exit(0);
+		perror("Error :\ninvalid map!!");
+		clean_exit (data);
+		exit(1);
 	}
 	data->map2 = NULL;
 	data->len = ft_strlen(data->map[0]);

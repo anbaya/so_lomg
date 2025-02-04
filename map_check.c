@@ -67,12 +67,12 @@ void	ft_lines_and_map_len(t_data *data)
 	int	i;
 
 	i = ft_strlen(data->map_len);
-	if (data->map_lines < 3 || data->map_lines * SIZE > 1080)
+	if (data->map_lines < 3 || data->map_lines * SIZE > 1020)
 	{
-		perror("invalid map size");
+		perror("Error :\ninvalid map size");
 		clean_exit(data);
 	}
-	if (i < 3 || i * SIZE > 1920)
+	if (i < 3 || i * SIZE > 1880)
 	{
 		perror("invalid map size");
 		clean_exit(data);
@@ -117,7 +117,7 @@ int	map_checker(t_data *data)
 			return (0);
 		i++;
 	}
-	if (coin_counter(data, 'P') != 1)
+	if (coin_counter(data, 'P') != 1 || coin_counter(data, 'E') != 1)
 		return (0);
 	data->coins = coin_counter(data, 'C');
 	if (data->coins == 0 || (!map_walls(data, data->map)))

@@ -33,6 +33,8 @@ char	*ft_substr(char const *s, int start, int len)
 	i = (int)start;
 	if (!s)
 		return (NULL);
+	if (len < 3)
+		return (NULL);
 	if (start >= ft_strlen(s))
 	{
 		sub = (char *)malloc(1);
