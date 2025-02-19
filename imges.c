@@ -28,4 +28,12 @@ void	imges(t_data *data)
 	data->enemy = mlx_xpm_file_to_image(data->mlx, ENEMY, &i, &i);
 	data->coin = mlx_xpm_file_to_image(data->mlx, COIN, &i, &i);
 	data->exit = mlx_xpm_file_to_image(data->mlx, EXIT, &i, &i);
+	if (!data->enemy || !data->coin || !data->floor || !data->exit 
+		|| !data->wall || !data->player[0] || !data->player[1] 
+			|| !data->player[2] || !data->player[3] || !data->player[4] 
+				|| !data->player[5])
+				{
+					perror ("file Error !!");
+					clean_exit(data);
+				}
 }

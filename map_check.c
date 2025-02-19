@@ -48,6 +48,7 @@ int	exit_finder(t_data *data, int x, int y)
 	{
 		e++;
 		data->map2[y][x] = 'X';
+		return (0);
 	}
 	else if (data->map2[y][x] == 'M')
 		return (0);
